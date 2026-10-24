@@ -1,0 +1,20 @@
+﻿<Window x:Class="WPF_Ai_Client.ResultWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Результат анализа ИИ" Height="400" Width="600" WindowStartupLocation="CenterOwner">
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Анализ заметки:" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+
+        <TextBox x:Name="ResultText" Grid.Row="1" IsReadOnly="True" TextWrapping="Wrap" 
+                 VerticalScrollBarVisibility="Auto" FontSize="14" Padding="5" Background="#F0F0F0"/>
+
+        <Button Grid.Row="2" Content="Закрыть" Width="100" Height="35" Margin="0,10,0,0" 
+                HorizontalAlignment="Right" Click="CloseButton_Click"/>
+    </Grid>
+</Window>
