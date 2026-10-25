@@ -22,10 +22,10 @@ namespace WPF_Ai_Client
                 {
                     using JsonDocument doc = JsonDocument.Parse(text.Substring(start, end - start + 1));
                     var root = doc.RootElement;
-                    return $"Вывод: {root.GetProperty("pt1").GetString()}\n\n" +
-                           $"Название: {root.GetProperty("pt2").GetString()}\n\n" +
-                           $"Советы: {root.GetProperty("pt3").GetString()}\n\n" +
-                           $"Ошибки: {root.GetProperty("pt4").GetString()}";
+                    return $"Краткий вывод:\n{root.GetProperty("pt1").GetString()}\n\n" +
+                           $"Название заметки:\n{root.GetProperty("pt2").GetString()}\n\n" +
+                           $"Советы:\n{root.GetProperty("pt3").GetString()}\n\n" +
+                           $"Предупреждения:\n{root.GetProperty("pt4").GetString()}";
                 }
             }
             catch { }

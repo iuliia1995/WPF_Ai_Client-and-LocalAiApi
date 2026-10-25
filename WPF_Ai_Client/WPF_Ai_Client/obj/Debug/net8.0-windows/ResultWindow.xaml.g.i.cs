@@ -60,7 +60,7 @@ namespace WPF_Ai_Client {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/WPF_Ai_Client;component/resultwindow.xaml.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/WPF_Ai_Client;V1.0.0.0;component/resultwindow.xaml.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\ResultWindow.xaml.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -2,12 +2,33 @@
 using System.Text;
 using System.Text.Json;
 using System.Windows;
+using System.Windows.Media.Animation;
 
 namespace WPF_Ai_Client
 {
     public partial class MainWindow : Window
     {
-        public MainWindow() => InitializeComponent();
+        private bool isPanelOpen = false;
+
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
+        private void ToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            DoubleAnimation animation = new DoubleAnimation
+            {
+                To = isPanelOpen ? -200 : 0,
+                Duration = TimeSpan.FromMilliseconds(200),
+                EasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseInOut }
+            };
+
+            PanelTransform.BeginAnimation(System.Windows.Media.TranslateTransform.XProperty, animation);
+
+            isPanelOpen = !isPanelOpen;
+            ToggleButton.Content = isPanelOpen ? "->" : "<-";
+        }
 
         private async void AnalyzeButton_Click(object sender, RoutedEventArgs e)
         {
@@ -17,17 +38,23 @@ namespace WPF_Ai_Client
 
             try
             {
+                // Отправляем запрос асинхронно, чтобы окно не зависало
                 var response = await client.PostAsync("http://localhost:5137/api/Ai/analyze", content);
+
                 if (response.IsSuccessStatusCode)
                 {
                     string result = await response.Content.ReadAsStringAsync();
-                    using JsonDocument doc = JsonDocument.Parse(result);
-                    string aiText = doc.RootElement.GetProperty("response").GetString();
-
-                    new ResultWindow(aiText).ShowDialog();
+                    new ResultWindow(result).ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show($"Ошибка сервера: {response.StatusCode}");
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка: {ex.Message}");
+            }
         }
     }
 }

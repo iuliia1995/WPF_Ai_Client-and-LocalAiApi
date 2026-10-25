@@ -2,19 +2,46 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="AI Анализ Заметок" Height="500" Width="700">
-    <Grid Margin="20">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-        <TextBlock Text="Введите текст заметки для анализа:" FontSize="16" Margin="0,0,0,10"/>
+        <!-- Выдвижная панель -->
+        <Border x:Name="SidePanel" Grid.Column="0" Width="200" Background="Gray" HorizontalAlignment="Left">
+            <Border.RenderTransform>
+                <TranslateTransform x:Name="PanelTransform" X="-200"/>
+            </Border.RenderTransform>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
-        <TextBox x:Name="NoteInput" Grid.Row="1" AcceptsReturn="True" TextWrapping="Wrap" 
-                 VerticalScrollBarVisibility="Auto" FontSize="14" Padding="5"/>
+                <Button x:Name="ToggleButton" Content="◀" Grid.Row="0" Click="ToggleButton_Click" Width="40" Height="30" HorizontalAlignment="Right" Margin="5"/>
 
-        <Button Grid.Row="2" Content="Проанализировать с помощью ИИ" Height="40" Margin="0,15,0,0" 
-                FontSize="14" Click="AnalyzeButton_Click"/>
+                <StackPanel Grid.Row="1" Margin="10">
+                    <TextBlock Text="Настройки ИИ" FontSize="16" Foreground="White" Margin="0,0,0,10"/>
+                    <Button Content="Анализировать заметку" Height="35" Margin="0,5"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Column="1" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Введите текст заметки для анализа:" FontSize="16" Margin="0,0,0,10"/>
+
+            <TextBox x:Name="NoteInput" Grid.Row="1" AcceptsReturn="True" TextWrapping="Wrap" 
+                     VerticalScrollBarVisibility="Auto" FontSize="14" Padding="5"/>
+
+            <Button Grid.Row="2" Content="Проанализировать с помощью ИИ" Height="40" Margin="0,15,0,0" 
+                    FontSize="14" Click="AnalyzeButton_Click"/>
+        </Grid>
     </Grid>
 </Window>

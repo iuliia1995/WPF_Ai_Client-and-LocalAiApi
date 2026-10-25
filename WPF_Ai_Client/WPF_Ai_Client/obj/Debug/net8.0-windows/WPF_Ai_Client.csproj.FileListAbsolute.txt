@@ -20,3 +20,4 @@ D:\Моя ИИ штука - тест\WPF_Ai_Client\WPF_Ai_Client\obj\Debug\net8.
 D:\Моя ИИ штука - тест\WPF_Ai_Client\WPF_Ai_Client\obj\Debug\net8.0-windows\WPF_Ai_Client.genruntimeconfig.cache
 D:\Моя ИИ штука - тест\WPF_Ai_Client\WPF_Ai_Client\obj\Debug\net8.0-windows\ref\WPF_Ai_Client.dll
 D:\Моя ИИ штука - тест\WPF_Ai_Client\WPF_Ai_Client\obj\Debug\net8.0-windows\WPF_Ai_C.46D87EFE.Up2Date
+D:\Моя ИИ штука - тест\WPF_Ai_Client\WPF_Ai_Client\obj\Debug\net8.0-windows\WPF_Ai_Client.sourcelink.json
